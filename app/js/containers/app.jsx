@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactsCollection from '../collections/contacts';
 
 import Contacts from '../components/contacts.jsx';
 
@@ -45,7 +46,7 @@ const App = React.createClass({
 
   getInitialState () {
     return {
-      contacts
+      contacts: new ContactsCollection(contacts)
     };
   },
 
