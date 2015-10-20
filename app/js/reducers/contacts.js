@@ -1,5 +1,6 @@
-
+import * as ActionTypes from '../action-types';
 import Contact from '../models/contact';
+import _ from 'lodash';
 
 let initialState = [
   {
@@ -45,6 +46,22 @@ initialState = initialState.map(Contact.create);
 
 export default function contacts(state = initialState, action) {
   switch(action.type) {
+  case ActionTypes.UPDATE_CONTACT:
+    let relevantProps = _.pick(action.props, ['name', 'tel', 'email']);
+    return state.map(customer =>
+      (customer.id === action.id) ?
+        Object.assign({}, customer, relevantProps) : customer
+    );
+  case ActionTypes.CREATE_CONTACT:
+    return [Contact.create({
+      id: state.reduce((maxId, contact) => Math.max(contact.id, maxId), -1) + 1,
+      name: action.props.name,
+      email: action.props.email,
+      tel: action.props.tel
+    }), ...state];
+  case ActionTypes.DELETE_CONTACT:
+    return state.filter(contact => contact.id !== action.id);
+
   default:
     return state;
   }
