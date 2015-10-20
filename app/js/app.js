@@ -15,7 +15,7 @@ render((
   <Provider store={store}>
     <ReduxRouter />
   </Provider>
-), $('.main-container')[0]);
+), $(".app")[0]);
 
 /*
 let ContactManager = {
