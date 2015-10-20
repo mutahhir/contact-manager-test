@@ -1,4 +1,8 @@
-ContactManager.Views.Contact = Backbone.View.extend({
+import Backbone from 'backbone';
+import _ from 'lodash';
+
+
+export default Backbone.View.extend({
   tagName: 'li',
   className: 'media col-md-6 col-lg-4',
   template: _.template($('#tpl-contact').html()),

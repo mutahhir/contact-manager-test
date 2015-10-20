@@ -1,11 +1,25 @@
-window.ContactManager = {
+import Backbone from 'backbone';
+import $ from 'jquery';
+import _ from 'lodash';
+
+Backbone.$ = $;
+
+import Router from './router';
+import ContactsCollection from './collections/contacts';
+import ContactsView from './views/contacts';
+import ContactForm from './views/contactForm';
+import ContactModel from './models/contact';
+
+
+
+let ContactManager = {
   Models: {},
   Collections: {},
   Views: {},
 
   start: function(data) {
-    var contacts = new ContactManager.Collections.Contacts(data.contacts),
-        router = new ContactManager.Router();
+    var contacts = new ContactsCollection(data.contacts),
+      router = new Router();
 
     router.on('route:home', function() {
       router.navigate('contacts', {
@@ -15,7 +29,7 @@ window.ContactManager = {
     });
 
     router.on('route:showContacts', function() {
-      var contactsView = new ContactManager.Views.Contacts({
+      var contactsView = new ContactsView({
         collection: contacts
       });
 
@@ -23,8 +37,8 @@ window.ContactManager = {
     });
 
     router.on('route:newContact', function() {
-      var newContactForm = new ContactManager.Views.ContactForm({
-        model: new ContactManager.Models.Contact()
+      var newContactForm = new ContactForm({
+        model: new ContactModel()
       });
 
       newContactForm.on('form:submitted', function(attrs) {
@@ -38,11 +52,11 @@ window.ContactManager = {
 
     router.on('route:editContact', function(id) {
       var contact = contacts.get(id),
-          editContactForm;
+        editContactForm;
 
       if (contact) {
         editContactForm = new ContactManager.Views.ContactForm({
-            model: contact
+          model: contact
         });
 
         editContactForm.on('form:submitted', function(attrs) {
@@ -59,3 +73,7 @@ window.ContactManager = {
     Backbone.history.start();
   }
 };
+
+// Export for browser
+window.ContactManager = ContactManager;
+export default ContactManager;

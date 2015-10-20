@@ -1,3 +1,7 @@
-ContactManager.Collections.Contacts = Backbone.Collection.extend({
-  model: ContactManager.Models.Contact
+import Backbone from 'backbone';
+import ContactModel from '../models/contact';
+
+
+export default Backbone.Collection.extend({
+  model: ContactModel
 });

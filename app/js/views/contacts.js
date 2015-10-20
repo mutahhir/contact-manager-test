@@ -1,8 +1,13 @@
-ContactManager.Views.Contacts = Backbone.View.extend({
+import Backbone from 'backbone';
+import _ from 'lodash';
+
+import ContactView from './contact';
+
+export default Backbone.View.extend({
   template: _.template($('#tpl-contacts').html()),
 
   renderOne: function(contact) {
-    var itemView = new ContactManager.Views.Contact({model: contact});
+    var itemView = new ContactView({model: contact});
     this.$('.contacts-container').append(itemView.render().$el);
   },
 

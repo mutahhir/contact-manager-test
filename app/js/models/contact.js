@@ -1,4 +1,7 @@
-ContactManager.Models.Contact = Backbone.Model.extend({
+import Backbone from 'backbone';
+import _ from 'lodash';
+
+export default Backbone.Model.extend({
   defaults: {
     name: null,
     tel: null,
