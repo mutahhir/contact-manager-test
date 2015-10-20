@@ -42,7 +42,7 @@ let contacts = [
   }
 ];
 
-const App = React.createClass({
+const ContactsMain = React.createClass({
 
   getInitialState () {
     return {
@@ -55,4 +55,4 @@ const App = React.createClass({
   }
 });
 
-export default App;
+export default ContactsMain;

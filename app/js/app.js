@@ -7,20 +7,21 @@ Backbone.$ = $;
 // import Router from './router';
 import ContactsCollection from './collections/contacts';
 
-import ContactForm from './views/contactForm';
+// import ContactForm from './views/contactForm';
 
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link, Redirect } from 'react-router';
 
-import App from './containers/app.jsx';
+import ContactsMain from './containers/contacts-main.jsx';
+import ContactsNewEdit from './containers/contacts-new-edit.jsx';
 
 import ContactModel from './models/contact';
 
 render((
   <Router>
-    <Router path="/contacts" component={App}>
-    </Router>
+    <Route path="/contacts" component={ContactsMain}></Route>
+    <Route path="/contacts/new" component={ContactsNewEdit}></Route>
     <Redirect from="/" to="/contacts" />
   </Router>
 ), $('.main-container')[0]);
