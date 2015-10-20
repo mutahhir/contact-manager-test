@@ -2,8 +2,29 @@ import React from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
 import Contacts from '../collections/contacts';
+import { updateContact, createContact } from '../actions/contact';
 
 const ContactsNewEdit = React.createClass({
+
+  handleSubmit: function (e) {
+    e.preventDefault();
+
+    const {contact, dispatch} = this.props;
+    const {name, email, tel} = this.refs;
+    let newValues = {
+      name: name.value,
+      email: email.value,
+      tel: tel.value
+    };
+
+    if (!!contact && contact.id) {
+      dispatch(updateContact(contact.id, newValues));
+    } else {
+      dispatch(createContact(newValues));
+    }
+    this.props.history.pushState(this.state, '/contacts');
+  },
+
   render () {
     const {contact} = this.props;
     const isNew = !!contact;
@@ -12,23 +33,23 @@ const ContactsNewEdit = React.createClass({
     return (
       <div>
         <h2 className="page-header text-center">{isNew ? 'Create' : 'Edit'} Contact</h2>
-        <form role="form" className="form-horizontal contract-form">
+        <form role="form" className="form-horizontal contract-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label className="col-sm-4 control-label">Full name:</label>
             <div className="col-sm-6">
-              <input type="text" className="form-control contact-name-input" value={name} />
+              <input type="text" className="form-control contact-name-input" ref="name" defaultValue={name} />
             </div>
           </div>
           <div className="form-group">
             <label className="col-sm-4 control-label">Email address:</label>
             <div className="col-sm-6">
-              <input type="email" className="form-control contact-email-input" value={email} />
+              <input type="email" className="form-control contact-email-input" ref="email" defaultValue={email} />
             </div>
           </div>
           <div className="form-group">
             <label className="col-sm-4 control-label">Telephone number:</label>
             <div className="col-sm-6">
-              <input type="tel" className="form-control contact-tel-input" value={tel} />
+              <input type="tel" className="form-control contact-tel-input" ref="tel" defaultValue={tel} />
             </div>
           </div>
           <div className="form-group">
