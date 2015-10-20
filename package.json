@@ -9,5 +9,8 @@
   },
   "author": "Mutahhir Ali Hayat <mutahhir.ali@gmail.com>",
   "license": "ISC",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint-plugin-react": "^3.6.3"
+  }
 }
