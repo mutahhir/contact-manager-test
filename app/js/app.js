@@ -4,21 +4,34 @@ import _ from 'lodash';
 
 Backbone.$ = $;
 
-import Router from './router';
+// import Router from './router';
 import ContactsCollection from './collections/contacts';
-import ContactsView from './views/contacts';
+
+import ContactsView from './views/contacts.jsx';
 import ContactForm from './views/contactForm';
+
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, Route, Link } from 'react-router';
+
 import ContactModel from './models/contact';
-
-
 
 let ContactManager = {
   Models: {},
   Collections: {},
   Views: {},
 
-  start: function(data) {
-    var contacts = new ContactsCollection(data.contacts),
+  start: function() {
+    // var contacts = new ContactsCollection(data.contacts);
+
+    render((
+      <Router>
+        <Router path="/" component={ContactsView}>
+        </Router>
+      </Router>
+    ), $('.main-container')[0]);
+
+    /*,
       router = new Router();
 
     router.on('route:home', function() {
@@ -70,7 +83,7 @@ let ContactManager = {
       }
     });
 
-    Backbone.history.start();
+    Backbone.history.start();*/
   }
 };
 
