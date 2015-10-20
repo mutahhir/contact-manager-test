@@ -1,39 +1,30 @@
-import Backbone from 'backbone';
-import $ from 'jquery';
-import _ from 'lodash';
-
-Backbone.$ = $;
-
-// import Router from './router';
-import ContactsCollection from './collections/contacts';
-
-// import ContactForm from './views/contactForm';
-
 import React from 'react';
+import $ from 'jquery';
 import { render } from 'react-dom';
 import { Router, Route, Link, Redirect } from 'react-router';
+import { Provider } from 'react-redux';
+import { ReduxRouter } from 'redux-router';
+import configureStore from './store/configure-store';
 
 import ContactsMain from './containers/contacts-main.jsx';
 import ContactsNewEdit from './containers/contacts-new-edit.jsx';
 
-import ContactModel from './models/contact';
+const store = configureStore();
 
 render((
-  <Router>
-    <Route path="/contacts" component={ContactsMain}></Route>
-    <Route path="/contacts/new" component={ContactsNewEdit}></Route>
-    <Redirect from="/" to="/contacts" />
-  </Router>
+  <Provider store={store}>
+    <ReduxRouter />
+  </Provider>
 ), $('.main-container')[0]);
 
+/*
 let ContactManager = {
   Models: {},
   Collections: {},
   Views: {},
 
   start: function() {
-    /*,
-      router = new Router();
+    var router = new Router();
 
     router.on('route:home', function() {
       router.navigate('contacts', {
@@ -84,10 +75,6 @@ let ContactManager = {
       }
     });
 
-    Backbone.history.start();*/
+    Backbone.history.start();
   }
-};
-
-// Export for browser
-window.ContactManager = ContactManager;
-export default ContactManager;
+};*/
