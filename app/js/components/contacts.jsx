@@ -12,7 +12,7 @@ export default React.createClass({
   renderContacts: function (contacts) {
 
     return contacts.map( contact =>
-      <Contact key={`contact-${contact.id}`} contact={contact}></Contact>
+      <Contact key={`contact-${contact.id}`} contact={contact} onDelete={this.props.onDelete}></Contact>
     );
   },
 

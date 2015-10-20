@@ -1,10 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router';
 
+
 export default React.createClass({
 
   propTypes: {
     contact: React.PropTypes.object.isRequired
+  },
+
+  onDelete: function (ev) {
+    ev.preventDefault();
+
+    const {contact} = this.props;
+    this.props.onDelete(contact.id);
   },
 
   render: function () {
@@ -21,9 +29,9 @@ export default React.createClass({
               <Link to={`/contacts/edit/${id}`}>
                 <span className="glyphicon glyphicon-pencil"></span>
               </Link>
-              <Link to={`/contacts/delete/${id}`} className="delete-contract">
+              <a className="delete-contract" onClick={this.onDelete}>
                 <span className="glyphicon glyphicon-trash"></span>
-              </Link>
+              </a>
             </small>
           </h3>
         </div>
