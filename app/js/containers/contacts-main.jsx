@@ -6,7 +6,7 @@ import Contacts from '../components/contacts.jsx';
 const ContactsMain = React.createClass({
 
   propTypes: {
-    contacts: React.PropTypes.object.isRequired
+    contacts: React.PropTypes.array.isRequired
   },
 
   render () {

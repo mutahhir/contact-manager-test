@@ -6,12 +6,12 @@ import Contact from './contact.jsx';
 export default React.createClass({
 
   propTypes: {
-    contacts: React.PropTypes.object.isRequired
+    contacts: React.PropTypes.array.isRequired
   },
 
   renderContacts: function (contacts) {
 
-    return contacts.models.map( contact =>
+    return contacts.map( contact =>
       <Contact key={`contact-${contact.id}`} contact={contact}></Contact>
     );
   },

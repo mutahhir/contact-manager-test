@@ -1,7 +1,7 @@
 
-import ContactsCollection from '../collections/contacts';
+import Contact from '../models/contact';
 
-const initialState = new ContactsCollection([
+let initialState = [
   {
     id: 1,
     name: 'Terrence S. Hatfield',
@@ -38,7 +38,10 @@ const initialState = new ContactsCollection([
     tel: '803-557-9815',
     email: 'RodolfoPRobinett@jourrapide.com'
   }
-]);
+];
+
+initialState = initialState.map(Contact.create);
+
 
 export default function contacts(state = initialState, action) {
   switch(action.type) {

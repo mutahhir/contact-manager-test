@@ -1,15 +1,21 @@
-import Backbone from 'backbone';
 import _ from 'lodash';
 
-export default Backbone.Model.extend({
-  defaults: {
-    name: null,
-    tel: null,
-    email: null,
-    avatar: null
-  },
+const defaults = {
+  name: '',
+  tel: '',
+  email: '',
+  avatar: ''
+};
 
-  initialize: function() {
-    this.set('avatar', _.random(1, 15) + '.jpg');
+let Contact = {
+  create: function (props) {
+    let self = Object.create({});
+    self = Object.assign(self, defaults, props);
+
+    self.avatar = _.random(1, 15) + '.jpg';
+
+    return self;
   }
-});
+};
+
+export default Contact;

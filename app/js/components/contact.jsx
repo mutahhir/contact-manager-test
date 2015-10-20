@@ -8,7 +8,7 @@ export default React.createClass({
   },
 
   render: function () {
-    const {id, name, avatar, tel, email} = this.props.contact.attributes;
+    const {id, name, avatar, tel, email} = this.props.contact;
     return (
       <li className="media col-md-6 col-lg-4">
         <div className="thumbnail">
