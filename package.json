@@ -8,5 +8,8 @@
   },
   "author": "Mutahhir Ali Hayat <mutahhir.ali@gmail.com>",
   "license": "ISC",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^1.7.2"
+  }
 }
