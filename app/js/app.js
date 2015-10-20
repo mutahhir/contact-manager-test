@@ -7,14 +7,23 @@ Backbone.$ = $;
 // import Router from './router';
 import ContactsCollection from './collections/contacts';
 
-import ContactsView from './views/contacts.jsx';
 import ContactForm from './views/contactForm';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link } from 'react-router';
+import { Router, Route, Link, Redirect } from 'react-router';
+
+import App from './containers/app.jsx';
 
 import ContactModel from './models/contact';
+
+render((
+  <Router>
+    <Router path="/contacts" component={App}>
+    </Router>
+    <Redirect from="/" to="/contacts" />
+  </Router>
+), $('.main-container')[0]);
 
 let ContactManager = {
   Models: {},
@@ -22,15 +31,6 @@ let ContactManager = {
   Views: {},
 
   start: function() {
-    // var contacts = new ContactsCollection(data.contacts);
-
-    render((
-      <Router>
-        <Router path="/" component={ContactsView}>
-        </Router>
-      </Router>
-    ), $('.main-container')[0]);
-
     /*,
       router = new Router();
 
