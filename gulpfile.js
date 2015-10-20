@@ -5,8 +5,18 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var babel = require('babelify');
+var webserver = require('gulp-webserver');
 
-function compile(watch) {
+gulp.task('webserver', function() {
+  gulp.src('.')
+    .pipe(webserver({
+      livereload: true,
+      port: 8000,
+      fallback: 'index.html'
+    }));
+});
+
+function compile(keepWatch) {
   var bundler = watchify(browserify('./app/js/app.js', { debug: true }).transform(babel));
 
   function rebundle() {
@@ -19,7 +29,7 @@ function compile(watch) {
       .pipe(gulp.dest('./build'));
   }
 
-  if (watch) {
+  if (keepWatch) {
     bundler.on('update', function() {
       console.log('-> bundling...');
       rebundle();
@@ -31,9 +41,9 @@ function compile(watch) {
 
 function watch() {
   return compile(true);
-};
+}
 
 gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['webserver', 'watch']);
