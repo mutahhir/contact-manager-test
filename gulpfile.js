@@ -6,9 +6,14 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var babel = require('babelify');
 var webserver = require('gulp-webserver');
+var del = require('del');
 
-gulp.task('webserver', function() {
-  gulp.src('.')
+var cssFilesToMove = [
+  './app/css/**.css'
+];
+
+gulp.task('webserver', ['move'], function() {
+  gulp.src('./build')
     .pipe(webserver({
       livereload: true,
       port: 8000,
@@ -26,7 +31,7 @@ function compile(keepWatch) {
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest('./build'));
+      .pipe(gulp.dest('./build/js'));
   }
 
   if (keepWatch) {
@@ -43,7 +48,25 @@ function watch() {
   return compile(true);
 }
 
-gulp.task('build', function() { return compile(); });
+function move () {
+  gulp.src(cssFilesToMove)
+    .pipe(gulp.dest('build/css'));
+
+  gulp.src(['./node_modules/bootstrap/dist/**'])
+    .pipe(gulp.dest('build/vendors/bootstrap'));
+
+  gulp.src(['./app/img/**'])
+    .pipe(gulp.dest('build/img'));
+
+  return gulp.src(['./index.html'], {base: './'})
+    .pipe(gulp.dest('build'));
+}
+
+gulp.task('build', ['move'], function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
+gulp.task('move', ['clean'], function () { return move(); });
+gulp.task('clean', function () {
+  return del(['./build']);
+});
 
 gulp.task('default', ['webserver', 'watch']);

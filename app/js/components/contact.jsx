@@ -20,7 +20,7 @@ export default React.createClass({
     return (
       <li className="media col-md-6 col-lg-4">
         <div className="thumbnail">
-          <img className="media-object" src={`app/img/faces/${avatar}`} />
+          <img className="media-object" src={`img/faces/${avatar}`} />
         </div>
         <div className="media-heading">
           <h3>

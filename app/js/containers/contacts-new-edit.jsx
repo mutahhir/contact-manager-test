@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
-import Contacts from '../collections/contacts';
 import { updateContact, createContact } from '../actions/contact';
 
 const ContactsNewEdit = React.createClass({
@@ -37,19 +36,22 @@ const ContactsNewEdit = React.createClass({
           <div className="form-group">
             <label className="col-sm-4 control-label">Full name:</label>
             <div className="col-sm-6">
-              <input type="text" className="form-control contact-name-input" ref="name" defaultValue={name} />
+              <input type="text" className="form-control contact-name-input"
+                ref="name" defaultValue={name} />
             </div>
           </div>
           <div className="form-group">
             <label className="col-sm-4 control-label">Email address:</label>
             <div className="col-sm-6">
-              <input type="email" className="form-control contact-email-input" ref="email" defaultValue={email} />
+              <input type="email" className="form-control contact-email-input"
+                ref="email" defaultValue={email} />
             </div>
           </div>
           <div className="form-group">
             <label className="col-sm-4 control-label">Telephone number:</label>
             <div className="col-sm-6">
-              <input type="tel" className="form-control contact-tel-input" ref="tel" defaultValue={tel} />
+              <input type="tel" className="form-control contact-tel-input"
+                ref="tel" defaultValue={tel} />
             </div>
           </div>
           <div className="form-group">
