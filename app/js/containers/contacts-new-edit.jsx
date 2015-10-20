@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router';
-
+import { connect } from 'react-redux';
+import Contacts from '../collections/contacts';
 
 const ContactsNewEdit = React.createClass({
   render () {
-    const isNew = false;
-    const name = '';
-    const email = '';
-    const tel = '';
+    const {contact} = this.props;
+    const isNew = !!contact;
+    const {name, email, tel} = contact;
 
     return (
       <div>
@@ -45,4 +45,22 @@ const ContactsNewEdit = React.createClass({
   }
 });
 
-export default ContactsNewEdit;
+function mapStateToProps(state) {
+  let {id} = state.router.params;
+  id = parseInt(id, 10);
+  let contact = state.contacts.filter(obj => obj.id === id);
+
+  if (contact.length > 0) {
+    contact = contact[0];
+  }
+
+  return {
+      contact
+  };
+}
+
+
+
+export default connect(
+  mapStateToProps
+)(ContactsNewEdit);

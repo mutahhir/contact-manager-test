@@ -9,6 +9,7 @@ export default (
     <Route component={App}>
       <Route path="/contacts" component={ContactsMain} />
       <Route path="/contacts/new" component={ContactsNewEdit} />
+      <Route path="/contacts/edit/:id" component={ContactsNewEdit} />
       <Redirect from="/" to="/contacts"/>
     </Route>
 );
