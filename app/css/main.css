@@ -25,17 +25,25 @@
 .media-object {
   width: 128px;
   height: 128px;
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 .media .thumbnail {
   display: inline-block;
   margin-bottom: 0;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.15);
 }
 
 .media-list {
-  text-align: center;
+  text-align: left;
 }
+
+.page-header .actions {
+  display: inline-block;
+  
+}
+
 
 @media (min-width: 450px) {
   .media-list {
