@@ -12,22 +12,18 @@ export default React.createClass({
   renderContacts: function (contacts) {
 
     return contacts.map( contact =>
-      <Contact key={`contact-${contact.id}`} contact={contact} onDelete={this.props.onDelete}></Contact>
+      <Contact key={`contact-${contact.id}`}
+        contact={contact}
+        onDelete={this.props.onDelete}></Contact>
     );
   },
 
   render: function () {
     const { contacts } = this.props;
     return (
-      <div>
-        <h2 className="page-header text-center">List of contacts</h2>
-        <p className="text-center">
-          <Link to="/contacts/new" className="btn btn-lg btn-outline">Add Contact</Link>
-        </p>
         <ul className="media-list row contacts-container">
           {this.renderContacts(contacts)}
         </ul>
-      </div>
     );
   }
 });

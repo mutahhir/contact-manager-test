@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router';
 import {deleteContact} from '../actions/contact';
 import Contacts from '../components/contacts.jsx';
 
@@ -20,7 +21,17 @@ const ContactsMain = React.createClass({
     const {contacts} = this.props;
     const onCustomerDelete = this.onCustomerDelete;
 
-    return <Contacts contacts={contacts} onDelete={onCustomerDelete}></Contacts>;
+    return (
+      <div>
+        <h2 className="page-header">
+          <span className="heading">Contacts</span>
+          <ul className="actions">
+            <Link to="/contacts/new" className="btn btn-sm btn-outline">Add Contact</Link>
+          </ul>
+        </h2>
+        <Contacts contacts={contacts} onDelete={onCustomerDelete}></Contacts>
+      </div>
+    );
   }
 });
 
