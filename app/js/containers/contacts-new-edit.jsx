@@ -31,7 +31,7 @@ const ContactsNewEdit = React.createClass({
 
     return (
       <div>
-        <h2 className="page-header text-center">{isNew ? 'Create' : 'Edit'} Contact</h2>
+        <h2 className="page-header">{isNew ? 'Create' : 'Edit'} Contact</h2>
         <form role="form" className="form-horizontal contract-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label className="col-sm-4 control-label">Full name:</label>

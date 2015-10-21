@@ -115,7 +115,9 @@
     float: left;
     margin-right: 25px;
   }
+}
 
+@media (max-width: 1200px) {
   .limited-length {
     width: auto;
   }
