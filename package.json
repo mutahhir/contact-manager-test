@@ -2,7 +2,7 @@
   "name": "contact-manager",
   "version": "1.0.0",
   "description": "Backbone Contact Manager ========================",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "",
     "lint": "eslint ./app"
@@ -28,6 +28,7 @@
     "history": "^1.12.5",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
+    "node-static": "^0.7.7",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
