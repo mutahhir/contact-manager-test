@@ -35,14 +35,14 @@ export default React.createClass({
           </div>
           <div className="card-details">
             <div className="media-heading">
-              <h3>{name}</h3>
+              <h3 className="limited-length" title={name}>{name}</h3>
             </div>
             <div className="media-body">
               <dl>
-                <dt>Phone Number:</dt>
-                <dd>{tel}</dd>
-                <dt>Email:</dt>
-                <dd>{email}</dd>
+                <dt><span className="glyphicon glyphicon-earphone"></span></dt>
+                <dd className="limited-length" title={`Phone: ${tel}`}>{tel}</dd>
+                <dt><span className="glyphicon glyphicon-envelope"></span></dt>
+                <dd className="limited-length" title={`Email: ${email}`}>{email}</dd>
               </dl>
             </div>
           </div>

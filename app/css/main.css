@@ -58,8 +58,30 @@
 .card .card-details {
   position: absolute;
   display: inline-block;
-  width: 200px;
   margin-left: 15px;
+  overflow: hidden;
+}
+
+.card-details dl {
+  margin-top: 10px;
+}
+
+.card-details dt {
+  float: left;
+  padding: 0;
+
+}
+
+.card-details dd {
+  padding-left: 15px;
+  margin-bottom: 5px;
+}
+
+.limited-length {
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .card .actions {
@@ -78,7 +100,9 @@
 }
 
 .media-heading h3{
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 20px;
+  overflow: visible;
 }
 
 
@@ -90,6 +114,10 @@
   .media .thumbnail {
     float: left;
     margin-right: 25px;
+  }
+
+  .limited-length {
+    width: auto;
   }
 }
 
