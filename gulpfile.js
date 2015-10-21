@@ -13,8 +13,8 @@ var cssFilesToMove = [
   './app/css/**.css'
 ];
 
-gulp.task('webserver', ['move'], function() {
-  gulp.src('./build')
+gulp.task('webserver', function() {
+  gulp.src('build')
     .pipe(webserver({
       livereload: true,
       port: 8000,
