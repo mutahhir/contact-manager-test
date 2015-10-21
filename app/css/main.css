@@ -28,8 +28,7 @@
   border-radius: 50%;
 }
 
-.media .thumbnail {
-  display: inline-block;
+.thumbnail {
   margin-bottom: 0;
   border-radius: 50%;
   box-shadow: 1px 1px 1px rgba(0,0,0,.15);
@@ -41,7 +40,30 @@
 
 .page-header .actions {
   display: inline-block;
-  
+}
+
+.card {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  padding: 10px 10px 0 10px;
+  margin-bottom: 20px;
+}
+
+.card .card-header {
+  display: inline-block;
+}
+
+.card .card-details {
+  position: absolute;
+  display: inline-block;
+  width: 200px;
+  margin-left: 15px;
+}
+
+.media-heading h3{
+  font-size: 16px;
 }
 
 
