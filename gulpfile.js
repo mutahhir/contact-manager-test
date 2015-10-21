@@ -6,6 +6,7 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var babel = require('babelify');
 var webserver = require('gulp-webserver');
+var concat = require('gulp-concat');
 var del = require('del');
 
 var cssFilesToMove = [
@@ -44,13 +45,22 @@ function compile(keepWatch) {
   rebundle();
 }
 
-function watch() {
+function watchApp() {
   return compile(true);
 }
 
-function move () {
-  gulp.src(cssFilesToMove)
+function buildCSS () {
+  return gulp.src(cssFilesToMove)
+    .pipe(concat('main.css'))
     .pipe(gulp.dest('build/css'));
+}
+
+function watchAssets() {
+  gulp.watch(cssFilesToMove, buildCSS);
+}
+
+function move () {
+  buildCSS();
 
   gulp.src(['./node_modules/bootstrap/dist/**'])
     .pipe(gulp.dest('build/vendors/bootstrap'));
@@ -63,10 +73,11 @@ function move () {
 }
 
 gulp.task('build', ['move'], function() { return compile(); });
-gulp.task('watch', function() { return watch(); });
+gulp.task('watch', function() { return watchApp(); });
 gulp.task('move', ['clean'], function () { return move(); });
 gulp.task('clean', function () {
   return del(['./build']);
 });
+gulp.task('watch-assets', function () { return watchAssets(); });
 
-gulp.task('default', ['webserver', 'watch']);
+gulp.task('default', ['webserver', 'watch', 'watch-assets']);

@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.5",
+    "gulp-concat": "^2.6.0",
     "history": "^1.12.5",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
